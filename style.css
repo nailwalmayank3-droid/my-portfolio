@@ -1,15 +1,49 @@
 body {
-    background: linear-gradient(to right, #0f172a, #1e293b);
-    color: white;
+    margin: 0;
     font-family: Arial, sans-serif;
-    text-align: center;
-    padding-top: 100px;
+    background: #0f172a;
+    color: white;
 }
 
-.container {
-    border: 1px solid #38bdf8;
-    padding: 30px;
-    border-radius: 10px;
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+.skills span {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    background: #1e293b;
+    border-radius: 5px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin: 10px auto;
     width: 60%;
-    margin: auto;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #020617;
 }
