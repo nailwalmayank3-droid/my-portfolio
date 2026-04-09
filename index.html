@@ -11,6 +11,7 @@
     <header>
         <h1>Mayank Nailwal 🚀</h1>
         <p>Aspiring Cloud & DevOps Engineer</p>
+        <button id="theme-toggle">🌙</button>
     </header>
 
     <section class="hero">
@@ -96,6 +97,19 @@
                 sec.classList.add("show");
             }
         });
+    });
+
+    // Dark Mode Toggle
+    const toggle = document.getElementById("theme-toggle");
+
+    toggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+            toggle.textContent = "☀️";
+        } else {
+            toggle.textContent = "🌙";
+        }
     });
 </script>
 

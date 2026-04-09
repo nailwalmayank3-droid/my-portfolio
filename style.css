@@ -170,3 +170,22 @@ footer {
 .project-card a:hover {
     background: #2563eb;
 }
+/* Light Mode */
+.light-mode {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.light-mode header {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+}
+
+.light-mode .project-card,
+.light-mode .skills span {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.light-mode .project-card a {
+    background: #2563eb;
+}
