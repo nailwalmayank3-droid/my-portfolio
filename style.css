@@ -189,3 +189,21 @@ footer {
 .light-mode .project-card a {
     background: #2563eb;
 }
+.project-card ul {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.project-card li {
+    margin: 5px 0;
+}
+.project-img {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.project-img:hover {
+    transform: scale(1.02);
+}
