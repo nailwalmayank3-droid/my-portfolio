@@ -86,11 +86,11 @@
             <li>✔ Auto Deployment (CI/CD)</li>
         </ul>
 <div class="image-grid">
-    <img src="images/ec2dashboard.png">
-    <img src="images/ec2dashboard2.png">
-    <img src="images/ec2securitygroup.png">
-    <img src="images/webhook.png">
-    <img src="images/webhook1.png">
+    <img src="images/ec2dashboard.png" onclick="openImage(this)">
+    <img src="images/ec2dashboard2.png" onclick="openImage(this)">
+    <img src="images/ec2securitygroup.png" onclick="openImage(this)">
+    <img src="images/webhook.png" onclick="openImage(this)">
+    <img src="images/webhook1.png" onclick="openImage(this)">
 </div>
 
         <p><strong>Status:</strong> Live & Running</p>
@@ -138,7 +138,21 @@
             toggle.textContent = "🌙";
         }
     });
+function openImage(img) {
+    const popup = document.getElementById("imagePopup");
+    const popupImg = document.getElementById("popupImg");
+
+    popup.style.display = "flex";
+    popupImg.src = img.src;
+}
+
+function closeImage() {
+    document.getElementById("imagePopup").style.display = "none";
+}
 </script>
+<div id="imagePopup" class="popup" onclick="closeImage()">
+    <img id="popupImg">
+</div>
 
 </body>
 </html>
