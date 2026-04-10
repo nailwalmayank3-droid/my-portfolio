@@ -156,6 +156,16 @@ function closeImage() {
 <div id="imagePopup" class="popup" onclick="closeImage()">
     <img id="popupImg">
 </div>
+<script>
+fetch("http://localhost:5000/api/message")
+  .then(res => res.json())
+  .then(data => {
+    const p = document.createElement("p");
+    p.innerText = data.message;
+    document.body.appendChild(p);
+  })
+  .catch(err => console.log(err));
+</script>
 
 </body>
 </html>
