@@ -10,10 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to EC2 via SSH
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
           host: 16.171.236.68
@@ -21,5 +18,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/ec2-user/my-portfolio
+            git reset --hard
             git pull origin main
+            sudo cp -r * /usr/share/nginx/html/
             sudo systemctl restart nginx
