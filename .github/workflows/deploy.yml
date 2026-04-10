@@ -17,18 +17,20 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /home/ec2-user/my-portfolio
-            
-            # Pull latest code
-            git reset --hard
-            git pull origin main
+  cd /home/ec2-user/my-portfolio
+  
+  git reset --hard
+  git pull origin main
 
-            # Stop old container
-            docker stop my-portfolio-container || true
-            docker rm my-portfolio-container || true
+  # Stop ALL containers using port 80
+  sudo docker ps -q | xargs -r sudo docker stop
+  sudo docker ps -aq | xargs -r sudo docker rm
 
-            # Rebuild image
-            docker build -t my-portfolio .
+  # Stop nginx if running
+  sudo systemctl stop nginx || true
 
-            # Run new container
-            docker run -d -p 80:80 --name my-portfolio-container my-portfolio
+  # Build new image
+  sudo docker build -t my-portfolio .
+
+  # Run fresh container
+  sudo docker run -d -p 80:80 --name my-portfolio-container my-portfolio
