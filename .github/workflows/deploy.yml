@@ -1,4 +1,4 @@
-name: Deploy to EC2
+name: Docker Auto Deploy
 
 on:
   push:
@@ -18,7 +18,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/ec2-user/my-portfolio
+            
+            # Pull latest code
             git reset --hard
             git pull origin main
-            sudo cp -r * /usr/share/nginx/html/
-            sudo systemctl restart nginx
+
+            # Stop old container
+            docker stop my-portfolio-container || true
+            docker rm my-portfolio-container || true
+
+            # Rebuild image
+            docker build -t my-portfolio .
+
+            # Run new container
+            docker run -d -p 80:80 --name my-portfolio-container my-portfolio
