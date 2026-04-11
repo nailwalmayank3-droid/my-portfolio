@@ -157,15 +157,20 @@ function closeImage() {
     <img id="popupImg">
 </div>
 <script>
-fetch("/api/message")
-  .then(res => res.json())
-  .then(data => {
-    const p = document.createElement("p");
-    p.innerText = data.message;
-    document.body.appendChild(p);
-  })
-  .catch(err => console.log(err));
+async function loadData() {
+  try {
+    const res = await fetch("/api/message");
+    const data = await res.json();
+
+    document.getElementById("output").innerText = data.message;
+  } catch (err) {
+    console.log("Error:", err);
+  }
+}
+
+loadData();
 </script>
+<h2 id="output">Loading...</h2>
 
 </body>
 </html>
