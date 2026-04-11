@@ -158,18 +158,38 @@ function closeImage() {
 </div>
 <script>
 async function loadData() {
-  try {
-    const res = await fetch("/api/message");
-    const data = await res.json();
+  const res = await fetch("/api/message");
+  const data = await res.json();
 
-    document.getElementById("output").innerText = data.message;
-  } catch (err) {
-    console.log("Error:", err);
-  }
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+
+  data.forEach(item => {
+    const p = document.createElement("p");
+    p.innerText = item.text;
+    output.appendChild(p);
+  });
+}
+
+async function sendMessage() {
+  const input = document.getElementById("msgInput");
+
+  await fetch("/api/message", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ text: input.value })
+  });
+
+  input.value = "";
+  loadData();
 }
 
 loadData();
 </script>
+<input type="text" id="msgInput" placeholder="Enter message" />
+<button onclick="sendMessage()">Send</button>
 <h2 id="output">Loading...</h2>
 
 </body>
