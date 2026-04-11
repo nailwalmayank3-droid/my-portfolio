@@ -4,7 +4,8 @@ services:
   frontend:
     build: .
     ports:
-      - "80:80"
+  - "80:80"
+  - "443:443"
 
   backend:
     build: ./backend
@@ -15,3 +16,6 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+volumes:
+  - /etc/letsencrypt/live/deploywithmayank.in/fullchain.pem:/etc/ssl/certs/fullchain.pem
+  - /etc/letsencrypt/live/deploywithmayank.in/privkey.pem:/etc/ssl/private/privkey.pem
