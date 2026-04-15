@@ -91,11 +91,30 @@
     margin: 5px auto;
     width: fit-content;
   }
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #38bdf8;
+  width: 0%;
+  z-index: 999;
+}
 </style>
+<meta charset="UTF-8">
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+<div id="progress"></div>
+<div id="particles-js"></div>
 
 <header>
   <button onclick="toggleMode()">🌙 Toggle Mode</button>
@@ -103,7 +122,7 @@
 
 <div class="hero" data-aos="fade-up">
   <h1>Mayank Nailwal</h1>
-<p>I build scalable cloud systems using AWS, Docker & CI/CD 🚀</p>
+<p id="typing"></p>
 </div>
 
 <div class="section" data-aos="fade-right">
@@ -176,6 +195,42 @@
   AOS.init({
     duration: 1000
   });
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script>
+AOS.init({ duration: 1000 });
+
+// typing effect
+const text = "I build scalable cloud systems using AWS, Docker & CI/CD 🚀";
+let i = 0;
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 40);
+  }
+}
+typeEffect();
+
+// particles
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 2 },
+    line_linked: { enable: true }
+  }
+});
+
+// scroll progress
+window.onscroll = function () {
+  let winScroll = document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (winScroll / height) * 100;
+  document.getElementById("progress").style.width = scrolled + "%";
+};
 </script>
 
 </body>
