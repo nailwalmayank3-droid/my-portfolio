@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Mayank Nailwal | DevOps Engineer</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+
+<div id="cursor-glow"></div>
 <div class="blob"></div>
 <div class="blob2"></div>
-<div id="cursor-glow"></div>
 <div id="progress"></div>
 <div id="particles-js"></div>
 
@@ -19,88 +22,44 @@
   <button onclick="toggleMode()">🌙 Toggle Mode</button>
 </header>
 
-<div class="hero" data-aos="fade-up">
+<section class="hero" data-aos="fade-up">
   <h1>Mayank Nailwal</h1>
-<p id="typing"></p>
-</div>
+  <p id="typing"></p>
+</section>
 
-<div class="section" data-aos="fade-right">
+<section class="section" data-aos="fade-right">
   <h2>🚀 Projects</h2>
   <div class="cards">
-    <div class="card" data-aos="flip-up">
-      Full Stack Deployment using AWS, Docker, Nginx, CI/CD & MongoDB
-    </div>
+    <div class="card">Full Stack Deployment using AWS, Docker, CI/CD & MongoDB</div>
   </div>
-</div>
+</section>
 
-<div class="section" data-aos="zoom-in">
+<section class="section" data-aos="zoom-in">
   <h2>🛠 Skills</h2>
   <div class="cards">
-    <div class="card" data-aos="flip-up">AWS</div>
-    <div class="card" data-aos="flip-up">Docker</div>
-    <div class="card" data-aos="flip-up">CI/CD</div>
-    <div class="card" data-aos="flip-up">Nginx</div>
-    <div class="card" data-aos="flip-up">MongoDB</div>
+    <div class="card">AWS</div>
+    <div class="card">Docker</div>
+    <div class="card">CI/CD</div>
+    <div class="card">Nginx</div>
+    <div class="card">MongoDB</div>
   </div>
-</div>
+</section>
 
-<div class="section" data-aos="fade-left">
-  <h2>📩 Contact Me</h2>
-
+<section class="section" data-aos="fade-left">
+  <h2>📩 Contact</h2>
   <input type="text" id="msgInput" placeholder="Your message">
   <button onclick="sendMessage()">Send</button>
-
   <div id="output"></div>
-</div>
+</section>
 
-<script>
-  function toggleMode() {
-    document.body.classList.toggle("light");
-  }
-
-  async function loadData() {
-    const res = await fetch("/api/message");
-    const data = await res.json();
-
-    const output = document.getElementById("output");
-    output.innerHTML = "";
-
-    data.forEach(item => {
-      const p = document.createElement("p");
-      p.innerText = item.text;
-      output.appendChild(p);
-    });
-  }
-
-  async function sendMessage() {
-    const input = document.getElementById("msgInput");
-
-    await fetch("/api/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ text: input.value })
-    });
-
-    input.value = "";
-    loadData();
-  }
-
-  loadData();
-</script>
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000
-  });
-</script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <script>
 AOS.init({ duration: 1000 });
 
-// typing effect
+// typing
 const text = "I build scalable cloud systems using AWS, Docker & CI/CD 🚀";
 let i = 0;
 function typeEffect() {
@@ -122,20 +81,50 @@ particlesJS("particles-js", {
   }
 });
 
-// scroll progress
+// scroll bar
 window.onscroll = function () {
   let winScroll = document.documentElement.scrollTop;
   let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  let scrolled = (winScroll / height) * 100;
-  document.getElementById("progress").style.width = scrolled + "%";
+  document.getElementById("progress").style.width = (winScroll / height) * 100 + "%";
 };
-</script>
-<script>
+
+// cursor glow
 document.addEventListener("mousemove", function(e) {
   const glow = document.getElementById("cursor-glow");
   glow.style.left = e.clientX + "px";
   glow.style.top = e.clientY + "px";
 });
+
+// theme toggle
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
+// backend
+async function loadData() {
+  const res = await fetch("/api/message");
+  const data = await res.json();
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  data.forEach(item => {
+    const p = document.createElement("p");
+    p.innerText = item.text;
+    output.appendChild(p);
+  });
+}
+
+async function sendMessage() {
+  const input = document.getElementById("msgInput");
+  await fetch("/api/message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text: input.value })
+  });
+  input.value = "";
+  loadData();
+}
+
+loadData();
 </script>
 
 </body>
