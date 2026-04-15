@@ -1,4 +1,4 @@
-name: Docker Auto Deploy
+name: Deploy to EC2
 
 on:
   push:
@@ -11,26 +11,13 @@ jobs:
 
     steps:
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: 16.171.96.41
           username: ec2-user
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.EC2_KEY }}
           script: |
             cd /home/ec2-user/my-portfolio
-
-            git reset --hard
-            git pull origin main
-
-            # Stop all running containers
-            sudo docker ps -q | xargs -r sudo docker stop
-            sudo docker ps -aq | xargs -r sudo docker rm
-
-            # Stop nginx (if running)
-            sudo systemctl stop nginx || true
-
-            # Build new image
-            sudo docker build -t my-portfolio .
-
-            # Run container
-            sudo docker run -d -p 80:80 --name my-portfolio-container my-portfolio
+            git pull
+            sudo docker-compose down
+            sudo docker-compose up -d --build
