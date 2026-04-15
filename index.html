@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+<div id="loader">Loading...</div>
 <div id="cursor-glow"></div>
 <div class="blob"></div>
 <div class="blob2"></div>
@@ -125,6 +125,26 @@ async function sendMessage() {
 }
 
 loadData();
+</script>
+<script>
+window.onload = () => {
+  document.getElementById("loader").style.display = "none";
+};
+</script>
+<script>
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("mousemove", e => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+
+    btn.style.transform = `translate(${x*0.2}px, ${y*0.2}px) scale(1.08)`;
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    btn.style.transform = "translate(0,0) scale(1)";
+  });
+});
 </script>
 
 </body>
