@@ -1,196 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayank Nailwal | Portfolio</title>
-    <link rel="stylesheet" href="style.css?v=2">
-</head>
-<body>
-
-    <header>
-        <h1>Mayank Nailwal 🚀</h1>
-        <p>Aspiring Cloud & DevOps Engineer</p>
-        <button id="theme-toggle">🌙</button>
-    </header>
-
-    <section class="hero">
-        <h2>Building Cloud Projects & Automations</h2>
-        <p>I deploy real applications using AWS, Git, and CI/CD pipelines.</p>
-	<p>CI/CD is working 🚀</p>
-	<p>Auto deploy working 🚀</p>
-	<p>Docker CI/CD working 🔥</p>
-        <button onclick="scrollToContact()">Contact Me</button>
-    </section>
-
-    <section>
-        <h2>About Me</h2>
-        <p>
-            I am learning Cloud Computing and DevOps. I have built and deployed
-            projects using AWS EC2, Nginx, and GitHub with automated deployment.
-        </p>
-    </section>
-
-    <section>
-        <h2>Skills</h2>
-        <div class="skills">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>Git & GitHub</span>
-            <span>AWS EC2</span>
-            <span>Nginx</span>
-            <span>CI/CD</span>
-        </div>
-    </section>
-
-    <section>
-    <h2>Projects</h2>
-
-    <div class="projects-container">
-
-        <div class="project-card">
-            <h3>🚀 Portfolio Website</h3>
-            <p>Deployed a personal portfolio on AWS EC2 using Nginx.</p>
-            <div class="tags">
-                <span>AWS</span>
-                <span>Nginx</span>
-                <span>HTML/CSS</span>
-            </div>
-            <a href="https://github.com/nailwalmayank3-droid/my-portfolio" target="_blank">View Code</a>
-        </div>
-
-        <div class="project-card">
-            <h3>⚙️ CI/CD Automation</h3>
-            <p>Built auto-deployment using GitHub webhooks and Flask server.</p>
-            <div class="tags">
-                <span>GitHub</span>
-                <span>Flask</span>
-                <span>CI/CD</span>
-            </div>
-            <a href="https://github.com/nailwalmayank3-droid/my-portfolio" target="_blank">View Code</a>
-        </div>
-
-    </div>
-</section>
-<section>
-    <h2>Deployment Showcase 🚀</h2>
-
-    <div class="project-card">
-        <h3>AWS EC2 Deployment</h3>
-        <p>
-            Launched EC2 instance, configured Nginx, deployed website and connected
-            with GitHub for CI/CD automation using webhooks.
-        </p>
-
-        <ul>
-            <li>✔ EC2 Setup</li>
-            <li>✔ Nginx Hosting</li>
-            <li>✔ GitHub Integration</li>
-            <li>✔ Auto Deployment (CI/CD)</li>
-        </ul>
-<div class="image-grid">
-    <img src="images/ec2dashboard.png" onclick="openImage(this)">
-    <img src="images/ec2dashboard2.png" onclick="openImage(this)">
-    <img src="images/ec2securitygroup.png" onclick="openImage(this)">
-    <img src="images/webhook.png" onclick="openImage(this)">
-    <img src="images/webhook1.png" onclick="openImage(this)">
-</div>
-
-        <p><strong>Status:</strong> Live & Running</p>
-    </div>
-</section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: nailwalmayank3@gmail.com</p>
-        <p>Phone: +91 9068788415</p>
-    </section>
-
-    <footer>
-        <p>© 2026 Mayank Nailwal</p>
-    </footer>
-
-    <script>
-    function scrollToContact() {
-        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  <title>Mayank Nailwal | DevOps Engineer</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #0f172a;
+      color: white;
+      text-align: center;
     }
 
-    // Scroll animation
-    const sections = document.querySelectorAll("section");
+    .hero {
+      padding: 60px 20px;
+    }
 
-    window.addEventListener("scroll", () => {
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-            const trigger = window.innerHeight - 100;
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
 
-            if (top < trigger) {
-                sec.classList.add("show");
-            }
-        });
-    });
+    p {
+      color: #94a3b8;
+    }
 
-    // Dark Mode Toggle
-    const toggle = document.getElementById("theme-toggle");
+    .section {
+      padding: 40px 20px;
+    }
 
-    toggle.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
+    .card {
+      background: #1e293b;
+      margin: 15px auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+    }
 
-        if (document.body.classList.contains("light-mode")) {
-            toggle.textContent = "☀️";
-        } else {
-            toggle.textContent = "🌙";
-        }
-    });
-function openImage(img) {
-    const popup = document.getElementById("imagePopup");
-    const popupImg = document.getElementById("popupImg");
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+    }
 
-    popup.style.display = "flex";
-    popupImg.src = img.src;
-}
+    button {
+      background: #38bdf8;
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+</head>
 
-function closeImage() {
-    document.getElementById("imagePopup").style.display = "none";
-}
-</script>
-<div id="imagePopup" class="popup" onclick="closeImage()">
-    <img id="popupImg">
-</div>
-<script>
-async function loadData() {
-  const res = await fetch("/api/message");
-  const data = await res.json();
+<body>
 
-  const output = document.getElementById("output");
-  output.innerHTML = "";
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Mayank Nailwal</h1>
+    <p>DevOps & Cloud Engineer</p>
+  </div>
 
-  data.forEach(item => {
-    const p = document.createElement("p");
-    p.innerText = item.text;
-    output.appendChild(p);
-  });
-}
+  <!-- PROJECT -->
+  <div class="section">
+    <h2>🚀 My Project</h2>
+    <div class="card">
+      <p>Deployed full-stack app using Docker, AWS EC2, Nginx, MongoDB & CI/CD pipeline.</p>
+    </div>
+  </div>
 
-async function sendMessage() {
-  const input = document.getElementById("msgInput");
+  <!-- SKILLS -->
+  <div class="section">
+    <h2>🛠 Skills</h2>
+    <div class="card">AWS</div>
+    <div class="card">Docker</div>
+    <div class="card">CI/CD</div>
+    <div class="card">Nginx</div>
+    <div class="card">MongoDB</div>
+  </div>
 
-  await fetch("/api/message", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ text: input.value })
-  });
+  <!-- CONTACT -->
+  <div class="section">
+    <h2>📩 Contact Me</h2>
 
-  input.value = "";
-  loadData();
-}
+    <input type="text" id="msgInput" placeholder="Enter your message" />
+    <button onclick="sendMessage()">Send</button>
 
-loadData();
-</script>
-<input type="text" id="msgInput" placeholder="Enter message" />
-<button onclick="sendMessage()">Send</button>
-<h2 id="output">Loading...</h2>
+    <h3>Messages:</h3>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    async function loadData() {
+      const res = await fetch("/api/message");
+      const data = await res.json();
+
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      data.forEach(item => {
+        const p = document.createElement("p");
+        p.innerText = item.text;
+        output.appendChild(p);
+      });
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("msgInput");
+
+      await fetch("/api/message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ text: input.value })
+      });
+
+      input.value = "";
+      loadData();
+    }
+
+    loadData();
+  </script>
 
 </body>
 </html>
