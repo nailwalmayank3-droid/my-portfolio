@@ -38,7 +38,10 @@ header h1 {
 
 .hero button:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 20px #38bdf8;
+    box-shadow: 
+  0 0 15px #38bdf8,
+  0 0 30px #38bdf8,
+  0 10px 40px rgba(56,189,248,0.6);
 }
 
 /* Sections */
@@ -87,7 +90,10 @@ section.show {
 
 .project:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 
+  0 0 15px #38bdf8,
+  0 0 30px #38bdf8,
+  0 10px 40px rgba(56,189,248,0.6);
 }
 
 /* Footer */
@@ -142,7 +148,10 @@ footer {
 
 .project-card a:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px #38bdf8, 0 0 50px #38bdf8;
+    box-shadow: 
+  0 0 15px #38bdf8,
+  0 0 30px #38bdf8,
+  0 10px 40px rgba(56,189,248,0.6);
 }
 
 /* Tags */
