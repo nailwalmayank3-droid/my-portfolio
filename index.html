@@ -92,6 +92,7 @@
     width: fit-content;
   }
 </style>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -100,32 +101,32 @@
   <button onclick="toggleMode()">🌙 Toggle Mode</button>
 </header>
 
-<div class="hero">
+<div class="hero" data-aos="fade-up">
   <h1>Mayank Nailwal</h1>
 <p>I build scalable cloud systems using AWS, Docker & CI/CD 🚀</p>
 </div>
 
-<div class="section">
+<div class="section" data-aos="fade-right">
   <h2>🚀 Projects</h2>
   <div class="cards">
-    <div class="card">
+    <div class="card" data-aos="flip-up">
       Full Stack Deployment using AWS, Docker, Nginx, CI/CD & MongoDB
     </div>
   </div>
 </div>
 
-<div class="section">
+<div class="section" data-aos="zoom-in">
   <h2>🛠 Skills</h2>
   <div class="cards">
-    <div class="card">AWS</div>
-    <div class="card">Docker</div>
-    <div class="card">CI/CD</div>
-    <div class="card">Nginx</div>
-    <div class="card">MongoDB</div>
+    <div class="card" data-aos="flip-up">AWS</div>
+    <div class="card" data-aos="flip-up">Docker</div>
+    <div class="card" data-aos="flip-up">CI/CD</div>
+    <div class="card" data-aos="flip-up">Nginx</div>
+    <div class="card" data-aos="flip-up">MongoDB</div>
   </div>
 </div>
 
-<div class="section">
+<div class="section" data-aos="fade-left">
   <h2>📩 Contact Me</h2>
 
   <input type="text" id="msgInput" placeholder="Your message">
@@ -169,6 +170,12 @@
   }
 
   loadData();
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000
+  });
 </script>
 
 </body>
