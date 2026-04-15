@@ -1,126 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Mayank Nailwal | DevOps Engineer</title>
+
   <style>
     body {
-      font-family: Arial;
       margin: 0;
+      font-family: Arial, sans-serif;
+      transition: 0.3s;
       background: #0f172a;
       color: white;
-      text-align: center;
     }
 
-    .hero {
-      padding: 60px 20px;
+    .light {
+      background: #f1f5f9;
+      color: black;
     }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #94a3b8;
-    }
-
-    .section {
-      padding: 40px 20px;
-    }
-
-    .card {
-      background: #1e293b;
-      margin: 15px auto;
+    header {
       padding: 20px;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 500px;
-    }
-
-    input, button {
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      border: none;
+      text-align: right;
     }
 
     button {
-      background: #38bdf8;
-      color: black;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 45px;
+    }
+
+    .section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      margin: 15px;
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+    }
+
+    #output p {
+      background: rgba(255,255,255,0.1);
+      padding: 8px;
+      border-radius: 5px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>Mayank Nailwal</h1>
-    <p>DevOps & Cloud Engineer</p>
-  </div>
+<header>
+  <button onclick="toggleMode()">🌙 Toggle Mode</button>
+</header>
 
-  <!-- PROJECT -->
-  <div class="section">
-    <h2>🚀 My Project</h2>
+<div class="hero">
+  <h1>Mayank Nailwal</h1>
+  <p>DevOps & Cloud Engineer 🚀</p>
+</div>
+
+<div class="section">
+  <h2>🚀 Projects</h2>
+  <div class="cards">
     <div class="card">
-      <p>Deployed full-stack app using Docker, AWS EC2, Nginx, MongoDB & CI/CD pipeline.</p>
+      Full Stack Deployment using AWS, Docker, Nginx, CI/CD & MongoDB
     </div>
   </div>
+</div>
 
-  <!-- SKILLS -->
-  <div class="section">
-    <h2>🛠 Skills</h2>
+<div class="section">
+  <h2>🛠 Skills</h2>
+  <div class="cards">
     <div class="card">AWS</div>
     <div class="card">Docker</div>
     <div class="card">CI/CD</div>
     <div class="card">Nginx</div>
     <div class="card">MongoDB</div>
   </div>
+</div>
 
-  <!-- CONTACT -->
-  <div class="section">
-    <h2>📩 Contact Me</h2>
+<div class="section">
+  <h2>📩 Contact Me</h2>
 
-    <input type="text" id="msgInput" placeholder="Enter your message" />
-    <button onclick="sendMessage()">Send</button>
+  <input type="text" id="msgInput" placeholder="Your message">
+  <button onclick="sendMessage()">Send</button>
 
-    <h3>Messages:</h3>
-    <div id="output"></div>
-  </div>
+  <div id="output"></div>
+</div>
 
-  <script>
-    async function loadData() {
-      const res = await fetch("/api/message");
-      const data = await res.json();
+<script>
+  function toggleMode() {
+    document.body.classList.toggle("light");
+  }
 
-      const output = document.getElementById("output");
-      output.innerHTML = "";
+  async function loadData() {
+    const res = await fetch("/api/message");
+    const data = await res.json();
 
-      data.forEach(item => {
-        const p = document.createElement("p");
-        p.innerText = item.text;
-        output.appendChild(p);
-      });
-    }
+    const output = document.getElementById("output");
+    output.innerHTML = "";
 
-    async function sendMessage() {
-      const input = document.getElementById("msgInput");
+    data.forEach(item => {
+      const p = document.createElement("p");
+      p.innerText = item.text;
+      output.appendChild(p);
+    });
+  }
 
-      await fetch("/api/message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ text: input.value })
-      });
+  async function sendMessage() {
+    const input = document.getElementById("msgInput");
 
-      input.value = "";
-      loadData();
-    }
+    await fetch("/api/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ text: input.value })
+    });
 
+    input.value = "";
     loadData();
-  </script>
+  }
+
+  loadData();
+</script>
 
 </body>
 </html>
