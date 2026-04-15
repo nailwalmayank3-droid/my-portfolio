@@ -15,16 +15,20 @@ body {
 
 /* Header */
 header {
-  padding: 15px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
+  padding: 15px;
+  backdrop-filter: blur(10px);
+  background: rgba(15,23,42,0.6);
+  transition: 0.3s;
+  z-index: 999;
 }
 
-/* Hero */
-.hero {
-  padding: 100px 20px;
+header.scrolled {
+  background: rgba(15,23,42,0.9);
+  box-shadow: 0 0 20px rgba(56,189,248,0.4);
 }
 
 .hero h1 {
@@ -170,4 +174,16 @@ input {
   justify-content: center;
   font-size: 24px;
   z-index: 99999;
+}
+.section {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  filter: blur(10px);
+  transition: all 0.8s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
