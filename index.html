@@ -5,77 +5,93 @@
   <title>Mayank Nailwal | DevOps Engineer</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      transition: 0.3s;
-      background: #0f172a;
-      color: white;
-    }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    transition: 0.4s;
+  }
 
-    .light {
-      background: #f1f5f9;
-      color: black;
-    }
+  .light {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    color: black;
+  }
 
-    header {
-      padding: 20px;
-      text-align: right;
-    }
+  header {
+    padding: 20px;
+    text-align: right;
+  }
 
-    button {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+  button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+  }
 
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
+  .hero {
+    text-align: center;
+    padding: 100px 20px;
+  }
 
-    .hero h1 {
-      font-size: 45px;
-    }
+  .hero h1 {
+    font-size: 50px;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-    .section {
-      padding: 40px;
-      text-align: center;
-    }
+  .section {
+    padding: 60px 20px;
+    text-align: center;
+  }
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .section h2 {
+    margin-bottom: 30px;
+  }
 
-    .card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      margin: 15px;
-      padding: 20px;
-      border-radius: 12px;
-      width: 250px;
-      transition: 0.3s;
-    }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    margin: 15px;
+    padding: 25px;
+    border-radius: 15px;
+    width: 260px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
 
-    input {
-      padding: 10px;
-      margin: 10px;
-      width: 200px;
-    }
+  .card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
 
-    #output p {
-      background: rgba(255,255,255,0.1);
-      padding: 8px;
-      border-radius: 5px;
-    }
-  </style>
+  input {
+    padding: 12px;
+    margin: 10px;
+    width: 220px;
+    border-radius: 8px;
+    border: none;
+  }
+
+  #output p {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 6px;
+    margin: 5px auto;
+    width: fit-content;
+  }
+</style>
 </head>
 
 <body>
@@ -86,7 +102,7 @@
 
 <div class="hero">
   <h1>Mayank Nailwal</h1>
-  <p>DevOps & Cloud Engineer 🚀</p>
+<p>I build scalable cloud systems using AWS, Docker & CI/CD 🚀</p>
 </div>
 
 <div class="section">
