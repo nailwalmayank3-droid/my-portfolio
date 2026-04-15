@@ -244,13 +244,14 @@ footer {
 }
 #cursor-glow {
   position: fixed;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(56,189,248,0.6), transparent 70%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(56,189,248,0.9) 0%, rgba(56,189,248,0.4) 40%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
+  mix-blend-mode: screen;
 }
 .blob, .blob2 {
   position: fixed;
